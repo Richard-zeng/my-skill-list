@@ -1,0 +1,4 @@
+interface:
+  display_name: "Splendor Web Player"
+  short_description: "Play Splendor web games with state and strategy."
+  default_prompt: "Use $splendor-web-player to inspect a Splendor web game and recommend the best legal move."

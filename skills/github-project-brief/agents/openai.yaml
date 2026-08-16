@@ -1,0 +1,7 @@
+interface:
+  display_name: "GitHub 项目速读"
+  short_description: "调研 GitHub 仓库并生成中文项目速读报告。"
+  default_prompt: "Use $github-project-brief to analyze this GitHub repository and generate a Chinese 项目速读报告："
+
+policy:
+  allow_implicit_invocation: true

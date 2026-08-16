@@ -1,0 +1,4 @@
+interface:
+  display_name: "写日报"
+  short_description: "结合日记、飞书材料与历史上下文，提炼并保存简洁、相关的个人日报"
+  default_prompt: "使用 $write-daily-report 根据我提供或授权读取的材料，参考近 7 日上下文，生成并保存一份简洁且与我直接相关的日报。"

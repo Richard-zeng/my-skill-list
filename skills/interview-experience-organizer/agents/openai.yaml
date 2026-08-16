@@ -1,0 +1,4 @@
+interface:
+  display_name: "面经整理助手"
+  short_description: "Structure raw interview notes into review docs"
+  default_prompt: "Use $interview-experience-organizer to turn my raw interview notes into a structured interview review document."

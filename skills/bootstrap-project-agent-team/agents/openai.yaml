@@ -1,0 +1,4 @@
+interface:
+  display_name: "启动项目 Agent 团队"
+  short_description: "为新项目安装并初始化可审计的五角色 Agent 协作团队"
+  default_prompt: "使用 $bootstrap-project-agent-team 在当前项目启动总控、管理、调研、开发和验收 Agent 团队。"

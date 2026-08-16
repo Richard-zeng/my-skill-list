@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目 Agent 团队"
+  short_description: "编排总控、管理、调研、开发与独立验收 Agent 团队"
+  default_prompt: "使用 $orchestrate-project-team 调整项目 Agent 拓扑，或启动已确认版本的调研、开发和验收闭环。"
