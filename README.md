@@ -4,14 +4,14 @@
 
 ## Skill 总览与目录
 
-| Skill | 用途与典型触发 | 来源归属 | 目录 |
+| Skill | 用途与典型触发 | 来源 | 目录 |
 | --- | --- | --- | --- |
-| bootstrap-project-agent-team | 在新建或现有 Codex 项目中安装可审计的多 Agent 团队基线；适合“启动项目团队”“安装五角色工作流”。 | 仓库维护者自建，全局 Skill 整理版 | [skills/bootstrap-project-agent-team](skills/bootstrap-project-agent-team/) |
-| orchestrate-project-team | 运行已有的管理、调研、开发、验收闭环；适合“启动已确认版本”“查询团队状态”“交给开发并独立验收”。 | 仓库维护者自建，项目级 Skill 整理版 | [skills/orchestrate-project-team](skills/orchestrate-project-team/) |
-| splendor-web-player | 读取并分析网页端《璀璨宝石》局面，校验合法动作并给出或执行建议。 | 仓库维护者自建，游戏项目 Skill 整理版 | [skills/splendor-web-player](skills/splendor-web-player/) |
-| github-project-brief | 调研公开 GitHub 仓库，输出有证据的中文“项目速读报告”。 | 仓库维护者自建，全局 Skill 整理版 | [skills/github-project-brief](skills/github-project-brief/) |
-| write-daily-report | 从日记、进展、会议、飞书材料或草稿中筛选本人当天事实并生成日报。 | 仓库维护者自建，项目级 Skill 整理版 | [skills/write-daily-report](skills/write-daily-report/) |
-| interview-experience-organizer | 将明确授权的面试记录整理为 Q&A、改进点、参考回答与追问预测。发布版已去身份化并加入首次使用隐私 gate。 | 仓库维护者自建，全局 Skill 的隐私整理版 | [skills/interview-experience-organizer](skills/interview-experience-organizer/) |
+| bootstrap-project-agent-team | 在新建或现有 Codex 项目中安装可审计的多 Agent 团队基线；适合“启动项目团队”“安装五角色工作流”。 | 自制 | [skills/bootstrap-project-agent-team](skills/bootstrap-project-agent-team/) |
+| orchestrate-project-team | 运行已有的管理、调研、开发、验收闭环；适合“启动已确认版本”“查询团队状态”“交给开发并独立验收”。 | 自制 | [skills/orchestrate-project-team](skills/orchestrate-project-team/) |
+| splendor-web-player | 读取并分析网页端《璀璨宝石》局面，校验合法动作并给出或执行建议。 | 自制 | [skills/splendor-web-player](skills/splendor-web-player/) |
+| github-project-brief | 调研公开 GitHub 仓库，输出有证据的中文“项目速读报告”。 | 自制 | [skills/github-project-brief](skills/github-project-brief/) |
+| write-daily-report | 从日记、进展、会议、飞书材料或草稿中筛选本人当天事实并生成日报。 | 自制 | [skills/write-daily-report](skills/write-daily-report/) |
+| interview-experience-organizer | 将明确授权的面试记录整理为 Q&A、改进点、参考回答与追问预测。发布版已去身份化并加入首次使用隐私 gate。 | 自制 | [skills/interview-experience-organizer](skills/interview-experience-organizer/) |
 
 每个目录以 `SKILL.md` 为入口；`references/`、`scripts/`、`assets/`、`agents/` 等目录仅在对应 Skill 运行需要时存在。
 
