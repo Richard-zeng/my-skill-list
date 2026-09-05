@@ -1,92 +1,158 @@
-# my-skill-list
+# My Skill List
 
-`my-skill-list` 是一组经过整理、可独立复制使用的个人 Codex Skills。本仓库只收录仓库维护者确认的 6 个自建 Skill，保留运行所需的直接依赖，并排除本地缓存、生成文件和私人候选人资料。
+沉淀我自建与收集的优秀 Agent Skills，覆盖项目协作、研究分析、日常工作与个人兴趣。
 
-## Skill 总览与目录
+希望把实践中有效的方法整理成可复用的工作流：遇到相似问题时，可以直接调用，并在使用中持续改进。
 
-| Skill | 用途与典型触发 | 来源 | 目录 |
-| --- | --- | --- | --- |
-| bootstrap-project-agent-team | 在新建或现有 Codex 项目中安装可审计的多 Agent 团队基线；适合“启动项目团队”“安装五角色工作流”。 | 自制 | [skills/bootstrap-project-agent-team](skills/bootstrap-project-agent-team/) |
-| orchestrate-project-team | 运行已有的管理、调研、开发、验收闭环；适合“启动已确认版本”“查询团队状态”“交给开发并独立验收”。 | 自制 | [skills/orchestrate-project-team](skills/orchestrate-project-team/) |
-| splendor-web-player | 读取并分析网页端《璀璨宝石》局面，校验合法动作并给出或执行建议。 | 自制 | [skills/splendor-web-player](skills/splendor-web-player/) |
-| github-project-brief | 调研公开 GitHub 仓库，输出有证据的中文“项目速读报告”。 | 自制 | [skills/github-project-brief](skills/github-project-brief/) |
-| write-daily-report | 从日记、进展、会议、飞书材料或草稿中筛选本人当天事实并生成日报。 | 自制 | [skills/write-daily-report](skills/write-daily-report/) |
-| interview-experience-organizer | 将明确授权的面试记录整理为 Q&A、改进点、参考回答与追问预测。发布版已去身份化并加入首次使用隐私 gate。 | 自制 | [skills/interview-experience-organizer](skills/interview-experience-organizer/) |
+目前包含 **7 个 Skill（6 个原创、1 个第三方）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
 
-每个目录以 `SKILL.md` 为入口；`references/`、`scripts/`、`assets/`、`agents/` 等目录仅在对应 Skill 运行需要时存在。
+## Skills 导航
+
+| 场景 | Skills |
+| --- | --- |
+| 🤝 Agent 协作 | [初始化项目团队](skills/bootstrap-project-agent-team/)、[编排项目团队](skills/orchestrate-project-team/) |
+| 🔍 项目研究 | [GitHub 项目速读](skills/github-project-brief/) |
+| 📊 图解与可视化 | [Archify](skills/archify/) |
+| 📝 工作记录 | [写日报](skills/write-daily-report/) |
+| 💼 求职面试 | [面经整理](skills/interview-experience-organizer/) |
+| 🎲 游戏辅助 | [璀璨宝石助手](skills/splendor-web-player/) |
+
+## 🤝 Agent 协作
+
+### [初始化项目团队](skills/bootstrap-project-agent-team/) · `bootstrap-project-agent-team`
+
+**原创** · 为新建或现有项目搭建多 Agent 协作基础。
+
+根据项目需要配置角色、协作协议与任务路由，完成团队初始化和启动握手，为后续开发与验收建立清晰的分工。
+
+**适合用在：** 项目刚启动，或准备将已有项目接入多 Agent 协作流程时。
+
+> 使用 $bootstrap-project-agent-team，为当前项目初始化 Agent 协作团队。
+
+### [编排项目团队](skills/orchestrate-project-team/) · `orchestrate-project-team`
+
+**原创** · 推进已初始化团队的日常协作与交付。
+
+组织管理、调研、开发和独立验收之间的任务流转，支持团队调整、版本启动、状态查询与失败返修。
+
+**适合用在：** 团队已经搭建完成，需要推进一个版本或了解当前交付进展时。
+
+> 使用 $orchestrate-project-team，查询当前团队状态和版本进展。
+
+这两个 Skill 配套使用：前者负责初始化，后者负责后续运行。完整流程依赖 Codex 的项目、任务与跨任务通信能力。
+
+## 🔍 项目研究
+
+### [GitHub 项目速读](skills/github-project-brief/) · `github-project-brief`
+
+**原创** · 将公开 GitHub 仓库整理为有证据的中文项目分析报告。
+
+结合 README、代码结构、Issue、Release 与提交记录，梳理项目定位、实现方式、活跃情况和使用限制，帮助判断是否值得学习、集成或二次开发。
+
+**适合用在：** 发现一个感兴趣的开源项目，想先理解它解决什么问题、适不适合自己时。
+
+> 使用 $github-project-brief，分析 https://github.com/owner/repo，重点判断它是否适合接入我的工作流。
+
+## 📊 图解与可视化
+
+### [Archify](skills/archify/) · `archify`
+
+**第三方** · 将自然语言、Mermaid 或代码结构转为可交互的图解。
+
+支持架构图、工作流、时序图、数据流与生命周期图，输出可独立打开的 HTML，帮助理解系统结构和运行过程。
+
+**适合用在：** 梳理项目架构、解释复杂流程，或将代码中的关系整理成可浏览的图解时。
+
+> 使用 $archify，为这个项目生成可交互的架构图。
+
+需要 Node.js 18 或更高版本；真实浏览器校验还需要 Chrome/Chromium。当前收录版本为 `2.17.0-dev.1`，固定至上游提交 [d8e4daf](https://github.com/tt-a1i/archify/tree/d8e4daf2610d512821365f41b139d874b29efe81/archify)。
+
+来源：[tt-a1i/archify](https://github.com/tt-a1i/archify)。本仓库采用上游工具整理独立运行包，保留 Skill 正文与运行代码，移除开发依赖和开发命令。可设置 `ARCHIFY_UPDATE_CHECK_DISABLED=1` 关闭可选的联网更新提醒及提醒状态写入。
+
+## 📝 工作记录
+
+### [写日报](skills/write-daily-report/) · `write-daily-report`
+
+**原创** · 从当天材料中提取工作事实，整理成清晰的日报。
+
+支持基于日记、工作进展、会议记录、飞书材料或已有草稿生成日报，重点区分当天成果、未推进事项、问题与下一步动作。
+
+**适合用在：** 工作信息分散在多处，需要整理成准确、简洁的当日记录时。
+
+> 使用 $write-daily-report，根据以下工作记录整理今天的日报。
+
+使用外部材料需要相应访问能力；迁移到其他项目时，可能需要调整保存路径。
+
+## 💼 求职面试
+
+### [面经整理](skills/interview-experience-organizer/) · `interview-experience-organizer`
+
+**原创** · 将原始面试记录整理成可复习、可改进的面经。
+
+从逐字稿、面试笔记或面后回忆中整理问答，补充回答改进点、参考回答和可能的后续追问。
+
+**适合用在：** 面试结束后复盘表现，或准备下一轮面试时。
+
+> 使用 $interview-experience-organizer，整理以下面试记录，重点分析回答中的不足和可能的追问。
+
+首次使用会确认背景信息与材料授权范围；个人资料的持久保存需要单独授权。
+
+## 🎲 游戏辅助
+
+### [璀璨宝石助手](skills/splendor-web-player/) · `splendor-web-player`
+
+**原创** · 分析网页端《璀璨宝石》棋局，提供行动建议或辅助操作。
+
+结合可见牌面、筹码、发展卡与回合状态，检查动作合法性并分析可选策略。
+
+**适合用在：** 想理解当前局面的选择，或在网页对局中获得辅助时。
+
+> 使用 $splendor-web-player，分析当前棋局，说明可选动作和推荐理由。
+
+依赖可用的浏览器控制工具，使用时需确认网页规则与游戏变体。
 
 ## 安装与使用
 
-可按使用范围选择一种安装方式：
+选择需要的 Skill，将其**整个目录**复制到安装位置，保留附带的脚本、模板和参考文件。
 
-1. 个人全局使用：把所需的单个 Skill 目录复制到 `~/.codex/skills/`。
-2. 单个项目使用：把所需目录复制到项目的 `.agents/skills/`。
-3. 保持整个目录一起克隆也可以，但 Codex 实际加载的是安装位置中的各个 Skill 目录。
+| 使用范围 | 安装位置 |
+| --- | --- |
+| 个人全局使用 | `~/.codex/skills/` |
+| 当前项目使用 | 项目中的 `.agents/skills/` |
 
-安装后，以 Skill 名称或其描述中的自然语言意图触发。例如：
+安装后，可通过名称调用：
 
-- `使用 $github-project-brief 分析 owner/repo`
-- `使用 $splendor-web-player 分析当前棋局`
-- `使用 $interview-experience-organizer 整理我明确授权的这份记录`
+```text
+使用 $github-project-brief 分析 owner/repo
+```
 
-运行前请阅读对应 `SKILL.md`。需要脚本的 Skill 还应确认本机已有相应的 Python、浏览器控制或 Codex 任务工具。
+也可以通过自然语言表达需求，由 Agent 根据 Skill 描述识别：
 
-## 面经 Skill 的隐私机制
+```text
+帮我研究一下这个 GitHub 项目，看看是否值得集成。
+```
 
-`interview-experience-organizer` 不含真实姓名、学校、私人绝对路径、个人简历或面试文件名，也不预置个人经历和项目指标。
+每个 Skill 的具体流程、依赖与限制，以对应目录中的 `SKILL.md` 为准。
 
-首次使用且 `references/candidate-profile.local.md` 不存在时，Skill 会在读取材料或生成面经前：
+## 仓库结构
 
-1. 展示隐私说明，并说明回答默认只在当前会话内使用。
-2. 一次性询问称呼/别名、教育背景、目标岗位/公司、经历与职责、经确认的指标及口径、稳定表达/禁用口径、材料路径与本轮授权范围、是否愿意持久保存。
-3. 要求每项得到响应，同时允许逐项回复“暂不提供”；缺失信息不会被推断。
-4. 只读取用户本轮明确列出的文件或目录；扩展路径或范围必须再次授权。
-5. 将“愿意保存”与“授权写入”分开：只有用户再次明确授权准确保存路径和内容后，才能创建本地画像文件。
+```text
+skills/
+├── bootstrap-project-agent-team/   # 初始化项目团队
+├── orchestrate-project-team/       # 编排项目团队
+├── github-project-brief/           # GitHub 项目速读
+├── archify/                        # 可交互图解
+├── write-daily-report/             # 写日报
+├── interview-experience-organizer/ # 面经整理
+└── splendor-web-player/            # 璀璨宝石助手
+```
 
-默认画像 `references/candidate-profile.md` 只是空白 schema。可选的 `references/candidate-profile.local.md` 已由包内 `.gitignore` 排除，不应提交或分发。
+每个目录以 `SKILL.md` 为入口，按需包含 `references/`、`scripts/`、`assets/` 等配套内容。
 
-## 已知限制
+## 来源与致谢
 
-### bootstrap-project-agent-team
+当前仓库包含 6 个原创 Skill，以及来自 [tt-a1i/archify](https://github.com/tt-a1i/archify) 的第三方 Skill **Archify**。
 
-- 依赖 Codex 的项目、任务和跨任务消息能力；在不支持长期任务路由的环境中不能完成完整握手。
-- 负责首次安装，不负责已安装团队的日常版本流转。
-- 修改已有 `AGENTS.md`、冲突配置或 Git 状态时仍需单独授权。
+Archify 代码遵循包内 [MIT LICENSE](skills/archify/LICENSE)，保留 tt-a1i 与 Cocoon AI 的版权信息；品牌图标另见 [第三方素材声明](skills/archify/THIRD_PARTY_NOTICES.md)。
 
-### orchestrate-project-team
-
-- 假设项目已完成团队初始化，并存在有效的本机路由注册表。
-- 只编排角色边界和交付闭环，不替代产品目标确认，也不允许开发 Agent 自我验收。
-- 多任务共享工作区时必须严格保持单一业务写入者。
-
-### splendor-web-player
-
-- 网页实现、规则变体和可见状态差异较大，每次动作前仍需重新核验页面与合法性。
-- 浏览器操作依赖可用的 Playwright 或等价浏览器工具。
-- `scripts/evaluate_state.py` 是启发式辅助，不替代对真实 UI、回合和规则的确认。
-
-### github-project-brief
-
-- 当前 Star、Issue、Release 和提交活跃度依赖网络与 GitHub 可访问性，可能受缓存或速率限制影响。
-- 报告用于快速研究和架构判断，不等同于完整代码审计、安全审计或法律意见。
-- 私有或不可访问仓库需要用户另行提供材料和访问授权。
-
-### write-daily-report
-
-- 高质量输出依赖目标日期内可追溯、且与本人有关的材料；材料不足时不能靠背景填充。
-- 飞书聊天、妙记和文档记录只有在连接器可用且用户明确授权时才能读取。
-- 当前规则保留原项目的知识库目录约定，迁移到其他项目时可能需要调整保存路径。
-
-### interview-experience-organizer
-
-- 首次使用必须完成隐私问答，因此不会在未确认范围时直接处理材料。
-- 不会自动发现简历或历史记录；材料路径、目录边界和扩展范围都需要用户明确授权。
-- 本地画像默认不跨设备同步；脚本只生成空白文档骨架，不负责自动填充面经内容。
-
-## 整理规则
-
-- 仓库顶层 `skills/` 下只保留上述 6 个自建 Skill，不混入第三方、系统或未确认来源的 Skill。
-- 每个包保留 `SKILL.md` 以及其运行所需的直接依赖；不为了统一外观改写无关功能。
-- 排除 `__pycache__/`、`*.pyc`、`candidate-profile.local.md`、临时输出和其他生成或私人文件。
-- 面经包同时修改其自建源 Skill 与发布副本，确保二者采用同一去身份化和隐私规则。
-- 本仓库不创建统一根 `LICENSE`；各 Skill 的来源归属仍为仓库维护者，后续若引入外部内容必须单独核验并保留其许可信息。
+本仓库暂未设置统一许可证，各 Skill 的版权与许可按其对应说明处理。后续收录的第三方作品会注明原作者、项目链接及许可信息；基于他人作品修改的版本会标注为“改编”。
