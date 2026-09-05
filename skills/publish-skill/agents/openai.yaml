@@ -1,0 +1,4 @@
+interface:
+  display_name: "发布 Skill 到我的仓库"
+  short_description: "将指定本地 Skill 整理发布到 my-skill-list，维护索引并推送"
+  default_prompt: "使用 $publish-skill，将我指定的本地 Skill 发布到 Richard-zeng/my-skill-list，检查发布内容、更新索引并提交推送。"

@@ -4,7 +4,7 @@
 
 希望把实践中有效的方法整理成可复用的工作流：遇到相似问题时，可以直接调用，并在使用中持续改进。
 
-目前包含 **7 个 Skill（6 个原创、1 个第三方）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
+目前包含 **8 个 Skill（7 个原创、1 个第三方）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
 
 ## Skills 导航
 
@@ -12,6 +12,7 @@
 | --- | --- | --- |
 | 🤝 Agent 协作 | [初始化项目团队](skills/bootstrap-project-agent-team/) | 2026-08-17 |
 | 🤝 Agent 协作 | [编排项目团队](skills/orchestrate-project-team/) | 2026-08-17 |
+| 🧰 Skill 管理 | [发布 Skill](skills/publish-skill/) | 2026-09-06 |
 | 🔍 项目研究 | [GitHub 项目速读](skills/github-project-brief/) | 2026-08-17 |
 | 📊 图解与可视化 | [Archify](skills/archify/) | 2026-09-06 |
 | 📝 工作记录 | [写日报](skills/write-daily-report/) | 2026-08-17 |
@@ -43,6 +44,20 @@
 > 使用 $orchestrate-project-team，查询当前团队状态和版本进展。
 
 这两个 Skill 配套使用：前者负责初始化，后者负责后续运行。完整流程依赖 Codex 的项目、任务与跨任务通信能力。
+
+## 🧰 Skill 管理
+
+### [发布 Skill](skills/publish-skill/) · `publish-skill`
+
+**原创** · 收录于 2026-09-06 · 将指定的本地 Skill 发布或更新到本仓库。
+
+按名称或路径定位源 Skill，整理运行所需文件，在独立工作区中同步 README 的导航、详细介绍、目录树与来源信息，再完成检查、提交和推送。也支持仅预览发布差异。
+
+**适合用在：** 新建了一个 Skill，或更新了已有 Skill，希望快速同步到自己的收藏仓库时。
+
+> 使用 $publish-skill，把 github-project-brief 推到我的仓库。
+
+默认目标固定为 `Richard-zeng/my-skill-list`，需要 Git 和该仓库的推送权限；其他使用者需先将目标仓库配置改为自己的地址。
 
 ## 🔍 项目研究
 
@@ -143,6 +158,7 @@
 skills/
 ├── bootstrap-project-agent-team/   # 初始化项目团队
 ├── orchestrate-project-team/       # 编排项目团队
+├── publish-skill/                  # 发布 Skill 到本仓库
 ├── github-project-brief/           # GitHub 项目速读
 ├── archify/                        # 可交互图解
 ├── write-daily-report/             # 写日报
@@ -154,7 +170,7 @@ skills/
 
 ## 来源与致谢
 
-当前仓库包含 6 个原创 Skill，以及来自 [tt-a1i/archify](https://github.com/tt-a1i/archify) 的第三方 Skill **Archify**。
+当前仓库包含 7 个原创 Skill，以及来自 [tt-a1i/archify](https://github.com/tt-a1i/archify) 的第三方 Skill **Archify**。
 
 Archify 代码遵循包内 [MIT LICENSE](skills/archify/LICENSE)，保留 tt-a1i 与 Cocoon AI 的版权信息；品牌图标另见 [第三方素材声明](skills/archify/THIRD_PARTY_NOTICES.md)。
 
