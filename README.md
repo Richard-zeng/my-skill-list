@@ -1,6 +1,6 @@
 # my-skill-list
 
-`my-skill-list` 是一组经过整理、可独立复制使用的个人 Codex Skills。本仓库只收录仓库维护者确认的 6 个自建 Skill，保留运行所需的直接依赖，并排除本地缓存、生成文件和私人候选人资料。
+`my-skill-list` 是一组经过整理、可独立复制使用的个人 Codex Skills。本仓库收录仓库维护者确认的 7 个 Skill（6 个自建、1 个第三方），保留运行所需的直接依赖，并排除本地缓存、临时生成文件和私人候选人资料。
 
 ## Skill 总览与目录
 
@@ -12,6 +12,7 @@
 | github-project-brief | 调研公开 GitHub 仓库，输出有证据的中文“项目速读报告”。 | 仓库维护者自建，全局 Skill 整理版 | [skills/github-project-brief](skills/github-project-brief/) |
 | write-daily-report | 从日记、进展、会议、飞书材料或草稿中筛选本人当天事实并生成日报。 | 仓库维护者自建，项目级 Skill 整理版 | [skills/write-daily-report](skills/write-daily-report/) |
 | interview-experience-organizer | 将明确授权的面试记录整理为 Q&A、改进点、参考回答与追问预测。发布版已去身份化并加入首次使用隐私 gate。 | 仓库维护者自建，全局 Skill 的隐私整理版 | [skills/interview-experience-organizer](skills/interview-experience-organizer/) |
+| archify | 将自然语言、Mermaid 或代码结构转为可交互的架构图、工作流、时序图、数据流与生命周期图，输出独立 HTML。 | 第三方：[tt-a1i/archify](https://github.com/tt-a1i/archify)，MIT；保留原作者及第三方素材声明 | [skills/archify](skills/archify/) |
 
 每个目录以 `SKILL.md` 为入口；`references/`、`scripts/`、`assets/`、`agents/` 等目录仅在对应 Skill 运行需要时存在。
 
@@ -28,6 +29,7 @@
 - `使用 $github-project-brief 分析 owner/repo`
 - `使用 $splendor-web-player 分析当前棋局`
 - `使用 $interview-experience-organizer 整理我明确授权的这份记录`
+- `使用 $archify 为这个项目生成可交互的架构图`
 
 运行前请阅读对应 `SKILL.md`。需要脚本的 Skill 还应确认本机已有相应的 Python、浏览器控制或 Codex 任务工具。
 
@@ -83,10 +85,18 @@
 - 不会自动发现简历或历史记录；材料路径、目录边界和扩展范围都需要用户明确授权。
 - 本地画像默认不跨设备同步；脚本只生成空白文档骨架，不负责自动填充面经内容。
 
+### archify
+
+- 来源版本为 `2.17.0-dev.1`，固定至上游提交 [d8e4daf2610d512821365f41b139d874b29efe81](https://github.com/tt-a1i/archify/tree/d8e4daf2610d512821365f41b139d874b29efe81/archify)，属于开发版。后续更新需要显式同步，不自动跟随上游。
+- 使用上游 `scripts/stage-clean-skill.mjs` 整理独立运行包；保留渲染器、预生成校验器、schema、示例和直接依赖，排除测试、依赖锁文件和开发期生成脚本，并移除 package.json 的开发命令与开发依赖。Skill 正文与运行代码保留上游内容。
+- 需要 Node.js 18 或更高版本，日常渲染无需在 Skill 内执行 npm install；真实浏览器校验还需要可用的 Chrome/Chromium。
+- 上游保留可选的联网更新提醒；设置 `ARCHIFY_UPDATE_CHECK_DISABLED=1` 可关闭该检查及提醒状态写入，检查器不会自动安装更新。
+- 代码遵循包内 [MIT LICENSE](skills/archify/LICENSE)，其中保留 tt-a1i 与 Cocoon AI 的版权信息；品牌图标另受 [THIRD_PARTY_NOTICES.md](skills/archify/THIRD_PARTY_NOTICES.md) 中记录的许可和商标条款约束。
+
 ## 整理规则
 
-- 仓库顶层 `skills/` 下只保留上述 6 个自建 Skill，不混入第三方、系统或未确认来源的 Skill。
+- 仓库顶层 `skills/` 下仅保留维护者确认收录的 Skill；自建与第三方来源在目录中分别标明，不收录未确认来源的内容。
 - 每个包保留 `SKILL.md` 以及其运行所需的直接依赖；不为了统一外观改写无关功能。
-- 排除 `__pycache__/`、`*.pyc`、`candidate-profile.local.md`、临时输出和其他生成或私人文件。
+- 排除 `__pycache__/`、`*.pyc`、`candidate-profile.local.md`、临时输出和私人文件；上游分发包运行必需的预生成代码与示例保留。
 - 面经包同时修改其自建源 Skill 与发布副本，确保二者采用同一去身份化和隐私规则。
-- 本仓库不创建统一根 `LICENSE`；各 Skill 的来源归属仍为仓库维护者，后续若引入外部内容必须单独核验并保留其许可信息。
+- 本仓库不创建统一根 `LICENSE`；各 Skill 的版权归原作者，第三方内容必须单独核验并在包内保留其许可及归属信息。
