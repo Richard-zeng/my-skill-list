@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenCode"
+  short_description: "Delegate coding through any configured OpenCode model"
+  default_prompt: "Use $opencode to inspect this workspace and complete the requested task with the locally configured model."

@@ -4,7 +4,7 @@
 
 希望把实践中有效的方法整理成可复用的工作流：遇到相似问题时，可以直接调用，并在使用中持续改进。
 
-目前包含 **8 个 Skill（7 个原创、1 个第三方）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
+目前包含 **9 个 Skill（8 个原创、1 个第三方）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
 
 ## Skills 导航
 
@@ -12,6 +12,7 @@
 | --- | --- | --- |
 | 🤝 Agent 协作 | [初始化项目团队](skills/bootstrap-project-agent-team/) | 2026-08-17 |
 | 🤝 Agent 协作 | [编排项目团队](skills/orchestrate-project-team/) | 2026-08-17 |
+| 🤝 Agent 协作 | [OpenCode 任务委派](skills/opencode/) | 2026-09-07 |
 | 🧰 Skill 管理 | [发布 Skill](skills/publish-skill/) | 2026-09-06 |
 | 🔍 项目研究 | [GitHub 项目速读](skills/github-project-brief/) | 2026-08-17 |
 | 📊 图解与可视化 | [Archify](skills/archify/) | 2026-09-06 |
@@ -44,6 +45,18 @@
 > 使用 $orchestrate-project-team，查询当前团队状态和版本进展。
 
 这两个 Skill 配套使用：前者负责初始化，后者负责后续运行。完整流程依赖 Codex 的项目、任务与跨任务通信能力。
+
+### [OpenCode 任务委派](skills/opencode/) · `opencode`
+
+**原创** · 收录于 2026-09-07 · 通过本地 OpenCode CLI 委派代码探索、实现与审查任务。
+
+支持附加文件、延续或分叉会话，记录会话 ID、任务结果与执行摘要。默认使用 OpenCode 本地配置的模型，仅在明确指定时传入模型参数。
+
+**适合用在：** 希望让 OpenCode 分析项目、完成开发或提供独立代码审查时。
+
+> 使用 $opencode，检查当前项目的代码结构，说明主要模块及其职责。
+
+需要 Bash、jq、已安装的 OpenCode CLI 和可用的模型认证；支持执行本地命令的 Agent 均可使用。执行权限由 OpenCode 本地配置决定，附加文件会发送给选定的模型服务。
 
 ## 🧰 Skill 管理
 
@@ -158,6 +171,7 @@
 skills/
 ├── bootstrap-project-agent-team/   # 初始化项目团队
 ├── orchestrate-project-team/       # 编排项目团队
+├── opencode/                       # 通过 OpenCode 委派任务
 ├── publish-skill/                  # 发布 Skill 到本仓库
 ├── github-project-brief/           # GitHub 项目速读
 ├── archify/                        # 可交互图解
@@ -170,7 +184,7 @@ skills/
 
 ## 来源与致谢
 
-当前仓库包含 7 个原创 Skill，以及来自 [tt-a1i/archify](https://github.com/tt-a1i/archify) 的第三方 Skill **Archify**。
+当前仓库包含 8 个原创 Skill，以及来自 [tt-a1i/archify](https://github.com/tt-a1i/archify) 的第三方 Skill **Archify**。
 
 Archify 代码遵循包内 [MIT LICENSE](skills/archify/LICENSE)，保留 tt-a1i 与 Cocoon AI 的版权信息；品牌图标另见 [第三方素材声明](skills/archify/THIRD_PARTY_NOTICES.md)。
 
