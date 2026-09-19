@@ -4,7 +4,7 @@
 
 希望把实践中有效的方法整理成可复用的工作流：遇到相似问题时，可以直接调用，并在使用中持续改进。
 
-目前包含 **9 个 Skill（8 个原创、1 个第三方）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
+目前包含 **10 个 Skill（8 个原创、2 个第三方）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
 
 ## Skills 导航
 
@@ -13,6 +13,7 @@
 | 🤝 Agent 协作 | [初始化项目团队](skills/bootstrap-project-agent-team/) | 2026-08-17 |
 | 🤝 Agent 协作 | [编排项目团队](skills/orchestrate-project-team/) | 2026-08-17 |
 | 🤝 Agent 协作 | [OpenCode 任务委派](skills/opencode/) | 2026-09-07 |
+| 🤝 Agent 协作 | [Kimi 设计与开发委派](skills/kimi/) | 2026-09-19 |
 | 🧰 Skill 管理 | [发布 Skill](skills/publish-skill/) | 2026-09-06 |
 | 🔍 项目研究 | [GitHub 项目速读](skills/github-project-brief/) | 2026-08-17 |
 | 📊 图解与可视化 | [Archify](skills/archify/) | 2026-09-06 |
@@ -57,6 +58,20 @@
 > 使用 $opencode，检查当前项目的代码结构，说明主要模块及其职责。
 
 需要 Bash、jq、已安装的 OpenCode CLI 和可用的模型认证；支持执行本地命令的 Agent 均可使用。执行权限由 OpenCode 本地配置决定，附加文件会发送给选定的模型服务。
+
+### [Kimi 设计与开发委派](skills/kimi/) · `kimi`
+
+**第三方** · 收录于 2026-09-19 · 通过本地 Kimi Code CLI 委派 UI/UX 设计、前端实现、代码评审与媒体分析。
+
+支持优先文件提示、会话续接、紧凑进度与 Markdown 结果，适合需要界面设计判断的开发任务；仅在明确要求 Kimi 或选择本 Skill 时调用。
+
+**适合用在：** 希望让 Kimi 评审界面、优化前端实现或分析本地截图与视频时。
+
+> 使用 $kimi，评审当前项目的页面布局，并给出改进建议。
+
+上游支持 macOS/Linux，依赖 Bash 3.2+、jq 和已安装并认证的 Kimi Code CLI；Windows 环境需另行验证兼容性。非交互模式可能修改文件或执行命令，图片生成与编辑不属于本 Skill 的能力。
+
+来源：[oil-oil/kimi](https://github.com/oil-oil/kimi)，固定至上游提交 [d0ef340](https://github.com/oil-oil/kimi/tree/d0ef34045f78333c6652e7c977da19c6ee83b2a4)。保留原始 Skill、脚本、MIT 许可证及品牌声明。
 
 ## 🧰 Skill 管理
 
@@ -172,6 +187,7 @@ skills/
 ├── bootstrap-project-agent-team/   # 初始化项目团队
 ├── orchestrate-project-team/       # 编排项目团队
 ├── opencode/                       # 通过 OpenCode 委派任务
+├── kimi/                           # 通过 Kimi 委派设计与开发任务
 ├── publish-skill/                  # 发布 Skill 到本仓库
 ├── github-project-brief/           # GitHub 项目速读
 ├── archify/                        # 可交互图解
@@ -184,8 +200,10 @@ skills/
 
 ## 来源与致谢
 
-当前仓库包含 8 个原创 Skill，以及来自 [tt-a1i/archify](https://github.com/tt-a1i/archify) 的第三方 Skill **Archify**。
+当前仓库包含 8 个原创 Skill，以及第三方 Skill **Archify**（[tt-a1i/archify](https://github.com/tt-a1i/archify)）和 **Kimi**（[oil-oil/kimi](https://github.com/oil-oil/kimi)）。
 
 Archify 代码遵循包内 [MIT LICENSE](skills/archify/LICENSE)，保留 tt-a1i 与 Cocoon AI 的版权信息；品牌图标另见 [第三方素材声明](skills/archify/THIRD_PARTY_NOTICES.md)。
+
+Kimi 遵循包内 [MIT LICENSE](skills/kimi/LICENSE)，保留 Kimi Skill contributors 的版权信息；Kimi 品牌标识不属于该 MIT 许可，另见 [品牌声明](skills/kimi/NOTICE)。
 
 本仓库暂未设置统一许可证，各 Skill 的版权与许可按其对应说明处理。后续收录的第三方作品会注明原作者、项目链接及许可信息；基于他人作品修改的版本会标注为“改编”。
