@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目决策 · 下一步三件事"
+  short_description: "综合项目会话与实际进展，经 Kimi 多轮讨论选出三件小而有效的下一步行动"
+  default_prompt: "使用 $project-next-three，综合当前项目的会话与实际状态，和 Kimi 多轮讨论，推荐下一步三件事，给出原因、收益、计划和工作量。"
