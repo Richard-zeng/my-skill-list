@@ -1,4 +1,4 @@
 interface:
   display_name: "发布 Skill 到我的仓库"
-  short_description: "通过 PR 发布指定 Skill，维护索引、审查合并并同步清理本地"
-  default_prompt: "使用 $publish-skill，将指定本地 Skill 发布到 Richard-zeng/my-skill-list，更新索引、创建 PR，审查通过后合并，再同步本地并清理本次分支。"
+  short_description: "整理 Skill 并创建 PR，等待用户亲自合并后同步本地和清理分支"
+  default_prompt: "使用 $publish-skill，将指定本地 Skill 发布到 Richard-zeng/my-skill-list，更新索引、创建并检查 PR，等待我亲自合并后再核验、同步本地并清理本次分支。"
