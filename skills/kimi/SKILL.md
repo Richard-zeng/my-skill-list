@@ -7,7 +7,7 @@ description: "将 UI/UX 设计、前端实现、代码探索、评审和本地�
 
 ## Core rules
 
-- Use `scripts/ask_kimi.sh` instead of invoking `kimi -p` directly. The wrapper captures Kimi's JSONL, streams compact progress, records the session ID, and writes a Markdown result.
+- Use `scripts/ask_kimi.sh` instead of invoking `kimi --print -p` directly. The wrapper captures Kimi's JSONL, streams compact progress, records the session ID, and writes a Markdown result.
 - Run the wrapper once per task. After success, read the reported `output_path` and inspect the workspace before deciding whether a follow-up is needed.
 - Give Kimi the goal, completion criteria, constraints, and non-obvious context. Keep delegated prompts focused, normally under 500 words.
 - Pass 1-4 useful entry points with `--file`; Kimi can discover the rest. File hints may point to code, images, or videos that Kimi can inspect with its local tools.
@@ -20,11 +20,19 @@ description: "将 UI/UX 设计、前端实现、代码探索、评审和本地�
 
 Use this Skill from any Agent that can load `SKILL.md` instructions and execute a local shell command. The wrapper is host-agnostic: it communicates with Kimi Code through its CLI and does not call a host-specific API. `agents/openai.yaml` is optional metadata for OpenAI hosts; other Agents may ignore it.
 
+On Windows, use Git Bash with Windows-native `kimi` and `jq` on PATH. Do not use `C:\Windows\System32\bash.exe` unless dependencies and authentication are installed separately inside WSL. In PowerShell, invoke the wrapper explicitly and pass Git Bash paths for all path arguments:
+
+```powershell
+& 'C:\Program Files\Git\bin\bash.exe' -lc 'bash /c/Users/YOUR_USER/.codex/skills/kimi/scripts/ask_kimi.sh "Reply with OK" --workspace /c/Users/YOUR_USER/.codex/skills/kimi'
+```
+
+Adapt the paths to the host. Install the CLI with `uv tool install kimi-cli`, ensure `jq --version` works in the same shell, and authenticate with `kimi login`. Kimi CLI 1.50.0 requires `--print` for non-interactive JSONL output; `-p` supplies only the prompt. The wrapper handles this explicitly.
+
 ## Safety boundary
 
 Kimi's non-interactive prompt mode uses its automatic permission policy and may edit files or run commands. Use it only in a trusted workspace and only when the user's request authorizes those changes.
 
-`kimi -p` cannot be combined with Kimi's `--plan` flag and provides no filesystem sandbox for non-interactive prompt mode. Therefore, this wrapper intentionally has no `--read-only` option. For enforced no-write exploration, use interactive `kimi --plan` in the user's terminal or another sandboxed mechanism; do not describe a prompt-only instruction as a read-only guarantee.
+`kimi --print` provides no filesystem sandbox. Therefore, this wrapper intentionally has no `--read-only` option. For enforced no-write exploration, use a separately enforced sandbox; do not describe a prompt-only instruction or plan mode as a filesystem guarantee.
 
 ## Wrapper path
 
@@ -116,7 +124,7 @@ Task text may be passed as the first positional argument, with `--task`, or thro
 ## Failure handling
 
 - If `kimi` is unavailable, run `kimi --version` and check the local installation.
-- If authentication or configuration fails, run `kimi doctor`; use `kimi login` when authentication is missing.
+- If authentication or configuration fails, inspect `kimi --help` and use `kimi login` when authentication is missing. CLI 1.50.0 has no `doctor` command.
 - If a flag stops working after an upgrade, inspect `kimi --help` and update the wrapper rather than assuming compatibility with another Agent CLI.
 - A non-zero Kimi exit is treated as failure. Exit code `3` means a goal blocked and `6` means a goal paused on versions that support goal mode.
 - Kimi warnings remain captured for diagnostics; failure output is truncated and common token patterns are redacted.
