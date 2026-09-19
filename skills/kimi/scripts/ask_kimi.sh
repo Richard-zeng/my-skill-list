@@ -166,6 +166,14 @@ done
 require_cmd kimi
 require_cmd jq
 
+# Native Windows jq emits CRLF unless binary output is requested.
+case "${OSTYPE:-}" in
+  msys*|cygwin*)
+    jq() { command jq -b "$@"; }
+    export PYTHONUTF8=1
+    ;;
+esac
+
 [[ -d "$workspace" ]] || fail "Workspace does not exist: $workspace"
 workspace="$(cd "$workspace" && pwd)"
 
@@ -201,6 +209,9 @@ if (( ${#file_hints[@]} > 0 )); then
     [[ -n "$resolved_hint" ]] || continue
     existence="missing"
     [[ -e "$resolved_hint" ]] && existence="exists"
+    case "${OSTYPE:-}" in
+      msys*|cygwin*) resolved_hint="$(cygpath -m "$resolved_hint")" ;;
+    esac
     file_block+=$'\n- '"$resolved_hint ($existence)"
   done
 fi
@@ -231,11 +242,12 @@ if (( ${#resolved_add_dirs[@]} > 0 )); then
     cmd+=(--add-dir "$resolved_dir")
   done
 fi
-cmd+=(-p "$prompt" --output-format stream-json)
+cmd+=(--print -p "$prompt" --output-format stream-json)
 
 json_file="$(mktemp)"
 stderr_file="$(mktemp)"
-trap 'rm -f "$json_file" "$stderr_file"' EXIT
+non_json_file="$(mktemp)"
+trap 'rm -f "$json_file" "$stderr_file" "$non_json_file"' EXIT
 
 run_kimi() {
   (cd "$workspace" && "${cmd[@]}")
@@ -251,6 +263,7 @@ run_kimi 2>"$stderr_file" | while IFS= read -r line; do
     printf '%s\n' "$line" >>"$json_file"
     print_progress "$line"
   else
+    printf '%s\n' "$line" >>"$non_json_file"
     echo "[kimi] Ignored non-JSON output from stream-json mode" >&2
   fi
 done
@@ -268,16 +281,22 @@ if (( kimi_status != 0 )); then
   if [[ -s "$stderr_file" ]]; then
     tail -n 40 "$stderr_file" | redact_stderr >&2
   fi
+  if [[ -s "$non_json_file" ]]; then
+    tail -n 20 "$non_json_file" | redact_stderr >&2
+  fi
   exit "$kimi_status"
 fi
 
-[[ -s "$json_file" ]] || fail "Kimi returned no JSONL messages. Check kimi doctor and local configuration."
+[[ -s "$json_file" ]] || fail "Kimi returned no JSONL messages. Check kimi --help, kimi login, and local configuration."
 
 captured_session_id="$(jq -rs '
   [.[] | select(.role == "meta" and .type == "session.resume_hint") | .session_id // empty]
   | last // ""
 ' <"$json_file" 2>/dev/null)"
 [[ -n "$captured_session_id" ]] || captured_session_id="$session_id"
+if [[ -z "$captured_session_id" ]]; then
+  captured_session_id="$(sed -nE 's/.*To resume this session: kimi -r ([A-Za-z0-9_-]+).*/\1/p' "$stderr_file" | tail -n 1)"
+fi
 
 summary_text="$(jq -rs "$content_text_filter
   [.[] | select(.role == \"assistant\") | content_text | select(length > 0)]

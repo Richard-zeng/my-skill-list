@@ -4,7 +4,7 @@
 
 希望把实践中有效的方法整理成可复用的工作流：遇到相似问题时，可以直接调用，并在使用中持续改进。
 
-目前包含 **10 个 Skill（8 个原创、2 个第三方）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
+目前包含 **10 个 Skill（8 个原创、1 个第三方、1 个改编）**，主要面向 **Codex** 使用，后续会继续加入精选第三方作品。
 
 ## Skills 导航
 
@@ -61,7 +61,7 @@
 
 ### [Kimi 设计与开发委派](skills/kimi/) · `kimi`
 
-**第三方** · 收录于 2026-09-19 · 通过本地 Kimi Code CLI 委派 UI/UX 设计、前端实现、代码评审与媒体分析。
+**改编** · 收录于 2026-09-19 · 通过本地 Kimi Code CLI 委派 UI/UX 设计、前端实现、代码评审与媒体分析。
 
 支持优先文件提示、会话续接、紧凑进度与 Markdown 结果，适合需要界面设计判断的开发任务；仅在明确要求 Kimi 或选择本 Skill 时调用。
 
@@ -69,9 +69,9 @@
 
 > 使用 $kimi，评审当前项目的页面布局，并给出改进建议。
 
-上游支持 macOS/Linux，依赖 Bash 3.2+、jq 和已安装并认证的 Kimi Code CLI；Windows 环境需另行验证兼容性。非交互模式可能修改文件或执行命令，图片生成与编辑不属于本 Skill 的能力。
+上游支持 macOS/Linux，依赖 Bash 3.2+、jq 和已安装并认证的 Kimi Code CLI；本仓库增加 Windows Git Bash 适配及 Kimi CLI 1.50.0 的非交互输出兼容。非交互模式可能修改文件或执行命令，图片生成与编辑不属于本 Skill 的能力。
 
-来源：[oil-oil/kimi](https://github.com/oil-oil/kimi)，固定至上游提交 [d0ef340](https://github.com/oil-oil/kimi/tree/d0ef34045f78333c6652e7c977da19c6ee83b2a4)。保留原始 Skill、脚本、MIT 许可证及品牌声明。
+来源：[oil-oil/kimi](https://github.com/oil-oil/kimi)，基于上游提交 [d0ef340](https://github.com/oil-oil/kimi/tree/d0ef34045f78333c6652e7c977da19c6ee83b2a4)。保留 MIT 许可证及品牌声明，并改编 Skill 和脚本以支持 Windows 路径、UTF-8、JSONL 输出与会话恢复提示。
 
 ## 🧰 Skill 管理
 
@@ -79,13 +79,13 @@
 
 **原创** · 收录于 2026-09-06 · 将指定的本地 Skill 发布或更新到本仓库。
 
-按名称或路径定位源 Skill，整理运行所需文件，在独立工作区中同步 README 的导航、详细介绍、目录树与来源信息，再完成检查、提交和推送。也支持仅预览发布差异。
+按名称或路径定位源 Skill，整理运行所需文件，在独立工作区中同步 README 的导航、详细介绍、目录树与来源信息，再完成检查、提交、推送发布分支与创建 PR。审查及仓库检查通过后合并，同步本地目标分支并清理本次临时分支和 worktree；也支持只创建 PR 等待人工审查或仅预览发布差异。
 
 **适合用在：** 新建了一个 Skill，或更新了已有 Skill，希望快速同步到自己的收藏仓库时。
 
 > 使用 $publish-skill，把 github-project-brief 推到我的仓库。
 
-默认目标固定为 `Richard-zeng/my-skill-list`，需要 Git 和该仓库的推送权限；其他使用者需先将目标仓库配置改为自己的地址。
+默认目标固定为 `Richard-zeng/my-skill-list`，需要 Git、可用的 GitHub PR 工具以及推送和合并权限，遵循仓库的 CI 与审批要求；其他使用者需先将目标仓库配置改为自己的地址。
 
 ## 🔍 项目研究
 
@@ -200,7 +200,7 @@ skills/
 
 ## 来源与致谢
 
-当前仓库包含 8 个原创 Skill，以及第三方 Skill **Archify**（[tt-a1i/archify](https://github.com/tt-a1i/archify)）和 **Kimi**（[oil-oil/kimi](https://github.com/oil-oil/kimi)）。
+当前仓库包含 8 个原创 Skill，以及第三方 Skill **Archify**（[tt-a1i/archify](https://github.com/tt-a1i/archify)）和改编 Skill **Kimi**（基于 [oil-oil/kimi](https://github.com/oil-oil/kimi)，增加 Windows 与 CLI 兼容适配）。
 
 Archify 代码遵循包内 [MIT LICENSE](skills/archify/LICENSE)，保留 tt-a1i 与 Cocoon AI 的版权信息；品牌图标另见 [第三方素材声明](skills/archify/THIRD_PARTY_NOTICES.md)。
 
